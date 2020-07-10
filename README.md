@@ -4,7 +4,12 @@
 2. Sqlite with Entity framework
 3. CQRS + Mediator
 4. SignalR
-5. React with Mobx as state management 
+5. React with Mobx as state management
+
+### Import commands
+
+migrations database
+    $ dotnet ef migrations add [comment] -p [target-proj] -s [exec-proj] 
 
 ### References
 
