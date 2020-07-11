@@ -16,17 +16,20 @@ namespace API
 
             using var scope = host.Services.CreateScope();
             var services = scope.ServiceProvider;
+            var logger = services.GetRequiredService<ILogger<Program>>();
+
             try
             {
                 var context = services.GetRequiredService<DataContext>();
                 context.Database.Migrate();
+                Seed.SeedData(context);
             }
             catch (Exception ex)
             {
-                var logger = services.GetRequiredService<ILogger<Program>>();
                 logger.LogError(ex, "An error occured during migration");
             }
 
+            logger.LogInformation("*****Server is running*****");
             host.Run();
         }
 

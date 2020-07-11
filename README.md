@@ -11,6 +11,10 @@
 migrations database
     $ dotnet ef migrations add [comment] -p [target-proj] -s [exec-proj] 
 
+dotnet tool update
+
+    $ dotnet tool update --global dotnet-ef
+
 ### References
 
 [Complete guide to building an app with .Net Core and React](https://www.udemy.com/course/complete-guide-to-building-an-app-with-net-core-and-react/)

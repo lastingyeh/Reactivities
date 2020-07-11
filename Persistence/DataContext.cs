@@ -1,14 +1,14 @@
 ﻿using System;
+using Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistence
 {
     public class DataContext : DbContext
     {
-        public DataContext(DbContextOptions opt) : base(opt)
-        {
+        public DataContext(DbContextOptions opt) : base(opt){}
 
-        }
+        public DbSet<Activity> Activities { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
