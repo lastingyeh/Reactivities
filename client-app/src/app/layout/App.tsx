@@ -20,7 +20,22 @@ const App = () => {
     const handleOpenCreateForm = () => {
         setSelectedActivity(null);
         setEditMode(true);
-    }
+    };
+
+    const handleCreateActivity = (activity: IActivity) => {
+        setActivities([...activities, activity]);
+        setSelectedActivity(activity);
+        setEditMode(false);
+    };
+
+    const handleEditActivity = (activity: IActivity) => {
+        setActivities([
+            ...activities.filter((a) => a.id != activity.id),
+            activity,
+        ]);
+        setSelectedActivity(activity);
+        setEditMode(false);
+    };
 
     useEffect(() => {
         axios
@@ -32,7 +47,7 @@ const App = () => {
 
     return (
         <Fragment>
-            <NavBar openCreateForm={handleOpenCreateForm}/>
+            <NavBar openCreateForm={handleOpenCreateForm} />
             <Container style={{ marginTop: "7em" }}>
                 <ActivityDashboard
                     activities={activities}
@@ -41,6 +56,8 @@ const App = () => {
                     editMode={editMode}
                     setEditMode={setEditMode}
                     setSelectedActivity={setSelectedActivity}
+                    createActivity={handleCreateActivity}
+                    editActivity={handleEditActivity}
                 />
             </Container>
         </Fragment>
