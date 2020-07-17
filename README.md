@@ -8,18 +8,23 @@
 
 ### Server EF commands
 
-migrations database
-    $ dotnet ef migrations add [comment] -p [target-proj] -s [exec-proj] 
+- migrations database
 
-dotnet tool update
+      $ dotnet ef migrations add [comment] -p [located-proj] -s [started-proj] 
 
-    $ dotnet tool update --global dotnet-ef
+- drop database
+
+      $ dotnet ef database drop -p [located-proj] -s [started-proj]
+
+- dotnet tool update
+
+      $ dotnet tool update --global dotnet-ef
 
 ### Client commands
 
-create project
+- create project
 
-    $ npx create-react-app client-app --use-npm --typescript
+      $ npx create-react-app client-app --use-npm --typescript
 
 ### References
 
