@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'mobx-react-lite/batchingForReactDom';
 import './app/layout/styles.css';
 import App from './app/layout/App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <div>
+        <App />
+    </div>,
+    document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
