@@ -61,9 +61,7 @@ class ActivityStore {
 		} else {
 			try {
 				this.loadingInitial = true;
-
 				activity = await agent.Activities.details(id);
-
 				runInAction('get activity', () => {
 					this.activity = activity;
 				});
