@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Form, Button, Label } from 'semantic-ui-react';
+import { Form, Button, Label, Header } from 'semantic-ui-react';
 import { Form as FinalForm, Field } from 'react-final-form';
 import { FORM_ERROR } from 'final-form';
 import { combineValidators, isRequired } from 'revalidate';
@@ -26,13 +26,18 @@ const LoginForm = () => {
       render={({
         handleSubmit,
         submitting,
-        form,
         submitError,
         invalid,
         pristine,
         dirtySinceLastSubmit,
       }) => (
         <Form onSubmit={handleSubmit}>
+          <Header
+            as='h2'
+            content='Login to Reactivities'
+            color='teal'
+            textAlign='center'
+          />
           <Field name='email' component={TextInput} placeholder='Email' />
           <Field
             name='password'
@@ -43,14 +48,14 @@ const LoginForm = () => {
           {submitError && !dirtySinceLastSubmit && (
             <Label color='red' basic content={submitError.statusText} />
           )}
-          <br/>
           <Button
             disabled={(invalid && !dirtySinceLastSubmit) || pristine}
             loading={submitting}
             positive
             content='Login'
+            fluid
           />
-          <pre>{JSON.stringify(form.getState(), null, 2)}</pre>
+      
         </Form>
       )}
     />
