@@ -1,10 +1,13 @@
 ### .Net Core with React 
 
+SERVER
+
 1. .Net Core 3.1.5
 2. Sqlite with Entity framework
 3. CQRS + Mediator
 4. SignalR
 5. React with Mobx as state management
+6. Semantic-ui-react
 
 ### Server EF commands
 
@@ -19,6 +22,20 @@
 - dotnet tool update
 
       $ dotnet tool update --global dotnet-ef
+
+### user-secrets
+
+- init
+
+      $ dotnet user-secrets init -p API/
+
+- set
+
+      $ dotnet user-secrets set "TokenKey" "your-own-secretkey" -p API/
+
+- list 
+
+      $ dotnet user-secrets list -p API/
 
 ### Client commands
 
