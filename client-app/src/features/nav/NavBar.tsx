@@ -6,7 +6,7 @@ import { RootStoreContext } from '../../app/stores/rootStore';
 
 const NavBar: React.FC = () => {
   const {
-    userStore: { isLoggedIn, user, logout },
+    userStore: { user, logout },
   } = useContext(RootStoreContext);
 
   return (

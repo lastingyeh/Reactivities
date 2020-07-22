@@ -17,7 +17,7 @@ const ActivityDetails: React.FC<RouteComponentProps<DetailParams>> = ({
   match,
 }) => {
   const {
-    activityStore: { loadActivities, loadActivity, loadingInitial, activity },
+    activityStore: { loadActivity, loadingInitial, activity },
   } = useContext(RootStoreContext);
 
   useEffect(() => {

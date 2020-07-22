@@ -14,10 +14,10 @@ import ActivityForm from '../../features/activities/form/ActivityForm';
 import ActivityDetails from '../../features/activities/details/ActivityDetails';
 import NotFound from './NotFound';
 import LoginForm from '../../features/user/LoginForm';
-import HomePage from '../../features/home/homePage';
 import { RootStoreContext } from '../stores/rootStore';
 import LoadingComponent from './LoadingComponent';
 import ModalContainer from '../common/modals/ModalContainer';
+import HomePage from '../../features/home/HomePage';
 
 const App: React.FC<RouteComponentProps> = ({ location }) => {
   const {
