@@ -5,6 +5,7 @@ import { IActivity } from '../models/activity';
 import agent from '../api/agent';
 import { history } from '../..';
 import { RootStore } from './rootStore';
+import { setActivityProps } from '../common/util/util';
 
 export default class ActivityStore {
   rootStore: RootStore;
@@ -46,7 +47,8 @@ export default class ActivityStore {
 
       runInAction('loading activities', () => {
         activities.forEach((activity) => {
-          activity.date = new Date(activity.date);
+          setActivityProps(activity, this.rootStore.userStore.user!);
+          
           this.activityRegistry.set(activity.id, activity);
         });
       });
@@ -73,7 +75,8 @@ export default class ActivityStore {
       this.loadingInitial = true;
       activity = await agent.Activities.details(id);
       runInAction('get activity', () => {
-        activity.date = new Date(activity.date);
+        setActivityProps(activity, this.rootStore.userStore.user!);
+
         this.activity = activity;
         this.activityRegistry.set(activity.id, activity);
       });
