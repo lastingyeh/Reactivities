@@ -37,7 +37,7 @@ namespace Application.Activities
                     throw new RestException(HttpStatusCode.NotFound, new { Activity = "Could not find activity" });
 
                 var user = await _context.Users
-                    .SingleOrDefaultAsync(x => x.Id == _userAccessor.GetCurrentUsername());
+                    .SingleOrDefaultAsync(x => x.UserName == _userAccessor.GetCurrentUsername());
 
                 var attendance = await _context.UserActivities
                     .SingleOrDefaultAsync(x => x.ActivityId == activity.Id && x.AppUserId == user.Id);
