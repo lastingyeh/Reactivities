@@ -43,6 +43,34 @@ SERVER
 
       $ npx create-react-app client-app --use-npm --typescript
 
+### Git Branch notes
+
+- create git branch dev
+
+      $ git branch dev
+
+- list local branch (the same env)
+
+      $ git branch
+
+- list all branch (include remote)
+
+      $ git ls-remote origin
+
+- fetch remote branch codes
+
+      $ git fetch origin dev
+
+- checkout to master
+
+      $ git checkout master
+
+- merge to master
+
+      $ git merge origin/dev
+
+
+
 ### References
 
 [Complete guide to building an app with .Net Core and React](https://www.udemy.com/course/complete-guide-to-building-an-app-with-net-core-and-react/)
