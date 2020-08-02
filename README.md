@@ -23,6 +23,16 @@ SERVER
 
       $ dotnet tool update --global dotnet-ef
 
+- path
+
+  * mac: 
+
+      ~/.microsoft/usersecrets/<guid>/secrets.json
+
+  * win:          
+      
+      %APPDATA%\Microsoft\UserSecrets\<guid>\secrets.json
+
 ### user-secrets
 
 - init

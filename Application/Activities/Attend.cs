@@ -23,43 +23,43 @@ namespace Application.Activities
             private readonly DataContext _context;
             private readonly IUserAccessor _userAccessor;
 
-            public Handler(DataContext context, IUserAccessor userAccessor)
+            public Handler (DataContext context, IUserAccessor userAccessor)
             {
                 _userAccessor = userAccessor;
                 _context = context;
             }
 
-            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<Unit> Handle (Command request, CancellationToken cancellationToken)
             {
-                var activity = await _context.Activities.FindAsync(request.Id);
+                var activity = await _context.Activities.FindAsync (request.Id);
 
                 if (activity == null)
-                    throw new RestException(HttpStatusCode.NotFound, new { Activity = "Could not find activity" });
+                    throw new RestException (HttpStatusCode.NotFound, new { Activity = "Could not find activity" });
 
                 var user = await _context.Users
-                    .SingleOrDefaultAsync(x => x.UserName == _userAccessor.GetCurrentUsername());
+                    .SingleOrDefaultAsync (x => x.UserName == _userAccessor.GetCurrentUsername ());
 
                 var attendance = await _context.UserActivities
-                    .SingleOrDefaultAsync(x => x.ActivityId == activity.Id && x.AppUserId == user.Id);
+                    .SingleOrDefaultAsync (x => x.ActivityId == activity.Id && x.AppUserId == user.Id);
 
-                if(attendance != null)
-                    throw new RestException(HttpStatusCode.BadRequest, new {attendance="Already attending this activity"});
+                if (attendance != null)
+                    throw new RestException (HttpStatusCode.BadRequest, new { attendance = "Already attending this activity" });
 
-                attendance = new UserActivity{
+                attendance = new UserActivity
+                {
                     Activity = activity,
                     AppUser = user,
                     IsHost = false,
                     DateJoined = DateTime.Now
                 };
 
-                _context.UserActivities.Add(attendance);
+                _context.UserActivities.Add (attendance);
 
-                var success = await _context.SaveChangesAsync() > 0;
+                var success = await _context.SaveChangesAsync () > 0;
 
                 if (success) return Unit.Value;
-                throw new Exception("Problem saving changes");
+                throw new Exception ("Problem saving changes");
             }
         }
-
     }
 }

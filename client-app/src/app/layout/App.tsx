@@ -33,13 +33,13 @@ const App: React.FC<RouteComponentProps> = ({ location }) => {
     }
   }, [getUser, setAppLoaded, token]);
 
-  if (!appLoaded) return <LoadingComponent content='Loading App...' />;
+  if (!appLoaded) return <LoadingComponent content="Loading App..." />;
 
   return (
     <Fragment>
       <ModalContainer />
-      <ToastContainer position='bottom-right' />
-      <Route exact path='/' component={HomePage} />
+      <ToastContainer position="bottom-right" />
+      <Route exact path="/" component={HomePage} />
       <Route
         path={'/(.+)'}
         render={() => (
@@ -47,14 +47,14 @@ const App: React.FC<RouteComponentProps> = ({ location }) => {
             <NavBar />
             <Container style={{ marginTop: '7em' }}>
               <Switch>
-                <Route exact path='/activities' component={ActivityDashboard} />
-                <Route path='/activities/:id' component={ActivityDetails} />
+                <Route exact path="/activities" component={ActivityDashboard} />
+                <Route path="/activities/:id" component={ActivityDetails} />
                 <Route
                   key={location.key}
                   path={['/createActivity', '/manage/:id']}
                   component={ActivityForm}
                 />
-                <Route path='/profile/:username' component={ProfilePage} />
+                <Route path="/profile/:username" component={ProfilePage} />
                 <Route component={NotFound} />
               </Switch>
             </Container>
