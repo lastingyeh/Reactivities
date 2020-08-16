@@ -18,12 +18,12 @@ namespace Application.Profiles
         public class Handler : IRequestHandler<Query, Profile>
         {
             private readonly IProfileReader _profileReader;
+            
             public Handler(IProfileReader profileReader)
             {
                 _profileReader = profileReader;
             }
-            public async Task<Profile> Handle(Query request,
-              CancellationToken cancellationToken)
+            public async Task<Profile> Handle(Query request, CancellationToken cancellationToken)
             {
                 return await _profileReader.ReadProfile(request.Username);
             }
