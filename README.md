@@ -79,6 +79,57 @@ SERVER
 
       $ git merge origin/dev
 
+### Docker 
+
+- mysql container pull and run
+
+      $ docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=mysqlPa$$w0rd -d mysql
+
+- exec mysql at bash
+
+      $ docker exec -it mysql bash
+
+- entry to mysql cli
+
+      root@b2a596a94367:/# mysql -u root -p 
+
+- input password
+
+- show databases
+
+      mysql> show databases;
+
+- add new user
+
+      mysql> CREATE USER 'appuser' IDENTIFIED WITH mysql_native_password BY 'Pa$$word';
+
+- grant database to new user 
+
+      mysql> GRANT ALL PRIVILEGES ON *.* TO 'appuser' WITH GRANT OPTION;
+
+- flush all settings
+
+      mysql> FLUSH PRIVILEGES;
+
+- list users 
+
+      mysql> SELECT host, user FROM mysql.user;
+
+### Migrations to MySQL
+
+- Delete migrations folder / files
+
+- Set Env variables
+
+      $ set ASPNETCORE_ENVIRONMENT=Production
+
+- Migrations
+
+      $ dotnet ef migrations add [comment] -p [located-proj] -s [started-proj] 
+
+- Run application
+
+      $ dot run
 
 
 ### References
