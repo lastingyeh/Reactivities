@@ -79,7 +79,7 @@ SERVER
 
       $ git merge origin/dev
 
-### Docker 
+### Docker for MySQL
 
 - mysql container pull and run
 
@@ -130,7 +130,6 @@ SERVER
 - Run application
 
       $ dot run
-
 
 ### References
 
