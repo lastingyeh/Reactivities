@@ -88,6 +88,7 @@ const User = {
     requests.post(`/user/register`, user),
   fbLogin: (accessToken: string) =>
     requests.post(`/user/facebook`, { accessToken }),
+  refreshToken: (): Promise<IUser> => requests.post(`/user/refreshToken`, {}),
 };
 
 const Profiles = {

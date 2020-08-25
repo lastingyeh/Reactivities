@@ -27,20 +27,20 @@ const App: React.FC<RouteComponentProps> = ({ location }) => {
   } = useContext(RootStoreContext);
 
   useEffect(() => {
-    if (token) {
+    if (token && !appLoaded) {
       getUser().finally(() => setAppLoaded());
     } else {
       setAppLoaded();
     }
-  }, [getUser, setAppLoaded, token]);
+  }, [getUser, setAppLoaded, token, appLoaded]);
 
-  if (!appLoaded) return <LoadingComponent content="Loading App..." />;
+  if (!appLoaded) return <LoadingComponent content='Loading App...' />;
 
   return (
     <Fragment>
       <ModalContainer />
-      <ToastContainer position="bottom-right" />
-      <Route exact path="/" component={HomePage} />
+      <ToastContainer position='bottom-right' />
+      <Route exact path='/' component={HomePage} />
       <Route
         path={'/(.+)'}
         render={() => (
@@ -48,14 +48,24 @@ const App: React.FC<RouteComponentProps> = ({ location }) => {
             <NavBar />
             <Container style={{ marginTop: '7em' }}>
               <Switch>
-                <PrivateRoute exact path="/activities" component={ActivityDashboard} />
-                <PrivateRoute path="/activities/:id" component={ActivityDetails} />
+                <PrivateRoute
+                  exact
+                  path='/activities'
+                  component={ActivityDashboard}
+                />
+                <PrivateRoute
+                  path='/activities/:id'
+                  component={ActivityDetails}
+                />
                 <PrivateRoute
                   key={location.key}
                   path={['/createActivity', '/manage/:id']}
                   component={ActivityForm}
                 />
-                <PrivateRoute path="/profile/:username" component={ProfilePage} />
+                <PrivateRoute
+                  path='/profile/:username'
+                  component={ProfilePage}
+                />
                 <Route component={NotFound} />
               </Switch>
             </Container>

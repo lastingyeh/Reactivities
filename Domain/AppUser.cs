@@ -9,6 +9,7 @@ namespace Domain
         public AppUser()
         {
             Photos = new Collection<Photo>();
+            RefreshTokens = new Collection<RefreshToken>();
         }
         public string DisplayName { get; set; }
         public string Bio { get; set; }
@@ -16,5 +17,6 @@ namespace Domain
         public virtual ICollection<Photo> Photos { get; set; }
         public virtual ICollection<UserFollowing> Followings { get; set; }
         public virtual ICollection<UserFollowing> Followers { get; set; }
+        public virtual ICollection<RefreshToken> RefreshTokens { get; set; }
     }
 }
