@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Form, Button, Header } from 'semantic-ui-react';
+import { Form, Button, Header, Divider } from 'semantic-ui-react';
 import { Form as FinalForm, Field } from 'react-final-form';
 import { FORM_ERROR } from 'final-form';
 import { combineValidators, isRequired } from 'revalidate';
@@ -7,6 +7,8 @@ import TextInput from '../../app/common/form/TextInput';
 import { RootStoreContext } from '../../app/stores/rootStore';
 import { IUserFormValues } from '../../app/models/user';
 import ErrorMessage from '../../app/common/form/ErrorMessage';
+import SocialLogin from './SocialLogin';
+import { observer } from 'mobx-react-lite';
 
 const validate = combineValidators({
   email: isRequired('email'),
@@ -15,7 +17,7 @@ const validate = combineValidators({
 
 const LoginForm = () => {
   const {
-    userStore: { login },
+    userStore: { login, fbLogin, loading },
   } = useContext(RootStoreContext);
 
   return (
@@ -32,7 +34,7 @@ const LoginForm = () => {
         pristine,
         dirtySinceLastSubmit,
       }) => (
-        <Form onSubmit={handleSubmit} error>
+        <Form onSubmit={handleSubmit} error autoComplete='off'>
           <Header
             as='h2'
             content='Login to Reactivities'
@@ -59,10 +61,12 @@ const LoginForm = () => {
             content='Login'
             fluid
           />
+          <Divider horizontal>Or</Divider>
+          <SocialLogin loading={loading} fbCallback={fbLogin} />
         </Form>
       )}
     />
   );
 };
 
-export default LoginForm;
+export default observer(LoginForm);
