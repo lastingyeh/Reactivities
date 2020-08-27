@@ -131,6 +131,20 @@ SERVER
 
       $ dot run
 
+### NPM update
+
+- show outdated
+
+      $ npm outdated
+
+- update 
+
+      $ npm update
+
+- check update
+
+      $ npx npm-check-updates -u
+
 ### References
 
 [Complete guide to building an app with .Net Core and React](https://www.udemy.com/course/complete-guide-to-building-an-app-with-net-core-and-react/)

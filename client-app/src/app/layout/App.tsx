@@ -19,6 +19,8 @@ import ModalContainer from '../common/modals/ModalContainer';
 import HomePage from '../../features/home/HomePage';
 import ProfilePage from '../../features/profiles/ProfilePage';
 import PrivateRoute from './PrivateRoute';
+import RegisterSuccess from '../../features/user/RegisterSuccess';
+import VerifyEmail from '../../features/user/VerifyEmail';
 
 const App: React.FC<RouteComponentProps> = ({ location }) => {
   const {
@@ -66,6 +68,11 @@ const App: React.FC<RouteComponentProps> = ({ location }) => {
                   path='/profile/:username'
                   component={ProfilePage}
                 />
+                <Route
+                  path='/user/registerSuccess'
+                  component={RegisterSuccess}
+                />
+                <Route path='/user/verifyEmail' component={VerifyEmail} />
                 <Route component={NotFound} />
               </Switch>
             </Container>

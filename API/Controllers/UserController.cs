@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Application.User;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,11 +21,11 @@ namespace API.Controllers
 
         [AllowAnonymous]
         [HttpPost("register")]
-        public async Task<ActionResult<User>> Register(Register.Command command)
+        public async Task<ActionResult<Unit>> Register(Register.Command command)
         {
-            var user = await Mediator.Send(command);
-            SetTokenCookie(user.RefreshToken);
-            return user;
+            command.Origin = Request.Headers["origin"];
+            await Mediator.Send(command);
+            return Ok("Registeration successful - please check your email");
         }
 
         [HttpGet]
@@ -51,6 +52,27 @@ namespace API.Controllers
             var user = await Mediator.Send(command);
             SetTokenCookie(user.RefreshToken);
             return user;
+        }
+
+        [AllowAnonymous]
+        [HttpPost("verifyEmail")]
+        public async Task<ActionResult> VerifyEmail(ConfirmEmail.Command command)
+        {
+            var result = await Mediator.Send(command);
+
+            if (!result.Succeeded) return BadRequest("Problem verifying email address");
+
+            return Ok("Email confirmed - you can now login");
+        }
+
+        [AllowAnonymous]
+        [HttpGet("resendEmailVerification")]
+        public async Task<ActionResult> ResendEmailVerification([FromQuery] ResendEmailVerification.Query query)
+        {
+            query.Origin = Request.Headers["origin"];
+            await Mediator.Send(query);
+
+            return Ok("Email verification link sent - please check email");
         }
 
         private void SetTokenCookie(string refreshToken)
