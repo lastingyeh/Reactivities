@@ -37,16 +37,10 @@
     "react-widgets": "^4.5.0",
     "react-widgets-date-fns": "^4.1.0",
     "revalidate": "^1.2.0",
-<<<<<<< HEAD
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.2",
     "typescript": "^3.7.5",
     "uuid": "^8.2.0"
-=======
-    "semantic-ui-react": "^1.2.1",
-    "typescript": "^4.0.2",
-    "uuid": "^8.3.0"
->>>>>>> 9029b93930fd3784f16520e2c36c32778b2795e0
   },
   "scripts": {
     "start": "react-scripts start",
