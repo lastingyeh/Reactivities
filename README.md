@@ -79,7 +79,7 @@ SERVER
 
       $ git merge origin/dev
 
-### Docker 
+### Docker for MySQL
 
 - mysql container pull and run
 
@@ -131,6 +131,19 @@ SERVER
 
       $ dot run
 
+### NPM update
+
+- show outdated
+
+      $ npm outdated
+
+- update 
+
+      $ npm update
+
+- check update
+
+      $ npx npm-check-updates -u
 
 ### References
 
