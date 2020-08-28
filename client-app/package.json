@@ -34,6 +34,7 @@
     "react-widgets": "^4.5.0",
     "react-widgets-date-fns": "^4.1.0",
     "revalidate": "^1.2.0",
+    "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.2",
     "typescript": "^3.7.5",
     "uuid": "^8.2.0"
@@ -41,7 +42,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "postbuild":"move build ../API/wwwroot",
+    "postbuild": "move build ../API/wwwroot",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
