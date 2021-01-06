@@ -2,7 +2,7 @@
 using System.Text;
 using System.Threading.Tasks;
 using API.Middleware;
-using API.SinnalR;
+using API.SignalR;
 using Application.Activities;
 using Application.interfaces;
 using Application.Profiles;

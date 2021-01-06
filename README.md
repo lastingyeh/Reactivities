@@ -129,7 +129,7 @@ SERVER
 
 - Run application
 
-      $ dot run
+      $ dotnet run
 
 ### NPM update
 
